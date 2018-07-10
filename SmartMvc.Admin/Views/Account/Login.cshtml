@@ -1,0 +1,46 @@
+﻿@using SmartMvc.Admin.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "";
+}
+
+
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>Smart</b>Web</a>
+    </div>
+    <div class="login-box-body">
+        <p class="login-box-msg">Entre para iniciar sua sessão</p>
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group has-feedback">
+                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Usuário", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Senha", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+
+            }
+        </section>
+
+    </div>
+</div>

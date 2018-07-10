@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1CFCF6C4-536E-4C6C-969A-2CD31F0DFA76}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartMvc.Data.Context</RootNamespace>
+    <AssemblyName>SmartMvc.Data.Context</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config\BaseContext.cs" />
+    <Compile Include="Config\ContextInitializer.cs" />
+    <Compile Include="ContextManager.cs" />
+    <Compile Include="Interfaces\IContextManager.cs" />
+    <Compile Include="Interfaces\IDbContext.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Mapping\BoxMap.cs" />
+    <Compile Include="Mapping\DepartmentMap.cs" />
+    <Compile Include="Mapping\InvoiceMap.cs" />
+    <Compile Include="Mapping\MovimentBoxMap.cs" />
+    <Compile Include="Mapping\MovimentItemMap.cs" />
+    <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Migrations\201805182251301_EntryOutletBox.cs" />
+    <Compile Include="Migrations\201805182251301_EntryOutletBox.Designer.cs">
+      <DependentUpon>201805182251301_EntryOutletBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805281753183_MovimentBox.cs" />
+    <Compile Include="Migrations\201805281753183_MovimentBox.Designer.cs">
+      <DependentUpon>201805281753183_MovimentBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805290221598_Box.cs" />
+    <Compile Include="Migrations\201805290221598_Box.Designer.cs">
+      <DependentUpon>201805290221598_Box.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805291442405_Department.cs" />
+    <Compile Include="Migrations\201805291442405_Department.Designer.cs">
+      <DependentUpon>201805291442405_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805300059418_Invoice.cs" />
+    <Compile Include="Migrations\201805300059418_Invoice.Designer.cs">
+      <DependentUpon>201805300059418_Invoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805300138351_Invoice_Alteracao.cs" />
+    <Compile Include="Migrations\201805300138351_Invoice_Alteracao.Designer.cs">
+      <DependentUpon>201805300138351_Invoice_Alteracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805300151300_Invoice_Alteracao_Optional.cs" />
+    <Compile Include="Migrations\201805300151300_Invoice_Alteracao_Optional.Designer.cs">
+      <DependentUpon>201805300151300_Invoice_Alteracao_Optional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805310046595_MovimentBox_Alteracoes.cs" />
+    <Compile Include="Migrations\201805310046595_MovimentBox_Alteracoes.Designer.cs">
+      <DependentUpon>201805310046595_MovimentBox_Alteracoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805311426128_InitialDate_FinalDate.cs" />
+    <Compile Include="Migrations\201805311426128_InitialDate_FinalDate.Designer.cs">
+      <DependentUpon>201805311426128_InitialDate_FinalDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806010127322_Create_MovimentItem.cs" />
+    <Compile Include="Migrations\201806010127322_Create_MovimentItem.Designer.cs">
+      <DependentUpon>201806010127322_Create_MovimentItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806030124027_UsersTable.cs" />
+    <Compile Include="Migrations\201806030124027_UsersTable.Designer.cs">
+      <DependentUpon>201806030124027_UsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806041746588_TypeNumberInvoice.cs" />
+    <Compile Include="Migrations\201806041746588_TypeNumberInvoice.Designer.cs">
+      <DependentUpon>201806041746588_TypeNumberInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmartContext.cs" />
+    <Compile Include="UnitOfWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartMvc.Domain\SmartMvc.Domain.csproj">
+      <Project>{cee7b22f-c3ff-4f1e-92b0-8b30f52b3f1e}</Project>
+      <Name>SmartMvc.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805182251301_EntryOutletBox.resx">
+      <DependentUpon>201805182251301_EntryOutletBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281753183_MovimentBox.resx">
+      <DependentUpon>201805281753183_MovimentBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805290221598_Box.resx">
+      <DependentUpon>201805290221598_Box.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291442405_Department.resx">
+      <DependentUpon>201805291442405_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805300059418_Invoice.resx">
+      <DependentUpon>201805300059418_Invoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805300138351_Invoice_Alteracao.resx">
+      <DependentUpon>201805300138351_Invoice_Alteracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805300151300_Invoice_Alteracao_Optional.resx">
+      <DependentUpon>201805300151300_Invoice_Alteracao_Optional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805310046595_MovimentBox_Alteracoes.resx">
+      <DependentUpon>201805310046595_MovimentBox_Alteracoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805311426128_InitialDate_FinalDate.resx">
+      <DependentUpon>201805311426128_InitialDate_FinalDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806010127322_Create_MovimentItem.resx">
+      <DependentUpon>201806010127322_Create_MovimentItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806030124027_UsersTable.resx">
+      <DependentUpon>201806030124027_UsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806041746588_TypeNumberInvoice.resx">
+      <DependentUpon>201806041746588_TypeNumberInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

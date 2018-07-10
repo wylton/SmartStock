@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Controle de Caixas";
+    ViewBag.Description = "Box";
+}
+
+<div class="box box-default">
+    <div class="box-header">
+        <h3 class="box-title">Controle de Envio de Caixas Plásticas</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Label("Chave NF")
+                @Html.TextBox("txtKeyNF", null, null, new { @class = "form-control" })
+                <input type="text" name="invoice.Id" style="display:none" />
+
+                @Html.Label("Caixa")
+                @Html.TextBox("txtBox", null, null, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <button type="submit" id="btnFinalizar" class="btn btn-success">Finalizar</button>
+    </div>
+</div>
+
+<div id=" Invoice_Form" style="display:none;">
+    <div class="box box-default">
+        <div class="box-header">
+            <h3 class="box-title">Informações da Nota Fiscal</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Label("Setor Destino:")
+                    <label id="lblSetor"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ViewSpecificJavascript
+{
+    <script type="text/javascript">
+    $(function () {
+        var boxId = $("#txtBox").val();
+        var keyNF = $('#txtKeyNF').val();
+
+    $('#txtBox').prop('disabled', true);
+
+    $('#txtKeyNF').val('');
+    $('#txtKeyNF').focus();
+
+    $('input[name=txtBox]').on('keydown', function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+
+        }
+    });
+
+    $('input[name=txtKeyNF]').on('keydown', function (e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            GetNF();
+
+        }
+    });
+
+        function CreateMoviment(invoiceId) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("CreateMoviment")',
+            data: '{invoiceId: ' + JSON.stringify(invoiceId) + '}',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (e) {
+                debugger;
+                toastr.success('Movimentação salva com sucesso!');
+
+            },
+            error: function (e) {
+                debugger;
+                toastr.error('Favor verificar os dados informado.', 'Erro!');
+                $('#txtBox').val('');
+                $('#txtBox').focus();
+            }
+        });
+        return false;
+    }
+
+    function GetNF() {
+        var keyNf = $('#txtKeyNF').val();
+        var invoiceId= $('input[name="Invoice.Id"]').text();
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:50973/api/Invoice/Get',
+            data: '{keyNf: ' + JSON.stringify(keyNf) + '}',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                if (response.success) {
+                    $('input[name="Invoice.Id"]').text(response.invoice.Id);
+                    $('#lblSetor').text(response.invoice.Filial);
+                    $('#txtKeyNF').prop('disabled', true);
+                    if (response.create) {
+                        CreateMoviment(response.invoice.Id);
+                    }
+                    $('#txtBox').prop('disabled', false);
+                    $('#txtBox').val('');
+                    $('#txtBox').focus();
+                } else {
+                    toastr.warning(response.message, 'Atenção!');
+                    $('#txtKeyNF').prop('disabled', false);
+                    $('#txtKeyNF').val('');
+                    $('#txtKeyNF').focus();
+                    $('#txtBox').prop('disabled', true);
+                }
+            },
+            error: function () {
+                toastr.error('Favor verificar os dados informado.', 'Erro!');
+                $('#txtKeyNF').val('');
+                $('#txtKeyNF').focus();
+            }
+        });
+        return false;
+    }
+
+});
+    </script>
+}

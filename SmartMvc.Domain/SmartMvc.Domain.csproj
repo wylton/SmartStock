@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CEE7B22F-C3FF-4F1E-92B0-8B30F52B3F1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SmartMvc.Domain</RootNamespace>
+    <AssemblyName>SmartMvc.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.RegularExpressions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Box.cs" />
+    <Compile Include="Entities\Commands\MovimentBoxCommands\RegisterMovimentBoxCommand.cs" />
+    <Compile Include="Entities\Department.cs" />
+    <Compile Include="Entities\Invoice.cs" />
+    <Compile Include="Entities\MovimentBox.cs" />
+    <Compile Include="Entities\MovimentItem.cs" />
+    <Compile Include="Entities\Specifications\BoxSpecs\BoxDatePrinterIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\DepartmentSpecs\DepartmentNameIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceNumberIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceNumberSerieIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceEmissionIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceQuantityIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceVolumeIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceTypeIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceFilialIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\InvoiceSpecs\InvoiceKeyNfIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\MovimentBoxSpecs\MovimentBoxDateInitialIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\MovimentBoxSpecs\MovimentBoxInvoiceIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\MovimentBoxSpecs\MovimentBoxTypeMovimentIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\MovimentItemSpecs\MovimentItemBoxIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\MovimentItemSpecs\MovimentItemMovimentBoxIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\UserSpecs\UserLoginIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\UserSpecs\UserNameIsRequiredSpec.cs" />
+    <Compile Include="Entities\Specifications\UserSpecs\UserPasswordIsRequiredSpec.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\Validations\BoxIsValidValidation.cs" />
+    <Compile Include="Entities\Validations\DepartmentIsValidValidation.cs" />
+    <Compile Include="Entities\Validations\InvoiceIsValidValidation.cs" />
+    <Compile Include="Entities\Validations\MovimentBoxIsValidValidation.cs" />
+    <Compile Include="Entities\Validations\MovimentItemIsValidValidation.cs" />
+    <Compile Include="Entities\Validations\UserIsValidValidation.cs" />
+    <Compile Include="Interfaces\Repository\Common\IReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\Common\IRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBoxRepository.cs" />
+    <Compile Include="Interfaces\Repository\IDepartmentRepository.cs" />
+    <Compile Include="Interfaces\Repository\IInvoiceRepository.cs" />
+    <Compile Include="Interfaces\Repository\IMovimentBoxRepository.cs" />
+    <Compile Include="Interfaces\Repository\IMovimentItemRepository.cs" />
+    <Compile Include="Interfaces\Repository\IUserRepository.cs" />
+    <Compile Include="Interfaces\Repository\ReadOnly\IBoxReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\ReadOnly\IDepartmentReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\ReadOnly\IInvoiceReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\ReadOnly\IMovimentBoxReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\ReadOnly\IMovimentItemReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\ReadOnly\IUserReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Service\Common\IReadOnlyService.cs" />
+    <Compile Include="Interfaces\Service\Common\IService.cs" />
+    <Compile Include="Interfaces\Service\IBoxService.cs" />
+    <Compile Include="Interfaces\Service\IDepartmentService.cs" />
+    <Compile Include="Interfaces\Service\IInvoiceService.cs" />
+    <Compile Include="Interfaces\Service\IMovimentBoxService.cs" />
+    <Compile Include="Interfaces\Service\IMovimentItemService.cs" />
+    <Compile Include="Interfaces\Service\IUserService.cs" />
+    <Compile Include="Interfaces\Specification\ISpecification.cs" />
+    <Compile Include="Interfaces\Validation\ISelfValidation.cs" />
+    <Compile Include="Interfaces\Validation\IValidation.cs" />
+    <Compile Include="Interfaces\Validation\IValidationRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BoxService.cs" />
+    <Compile Include="Services\DepartmentService.cs" />
+    <Compile Include="Services\Helpers\LinqExtentions.cs" />
+    <Compile Include="Services\Common\ReadOnlyService.cs" />
+    <Compile Include="Services\Common\Service.cs" />
+    <Compile Include="Services\InvoiceService.cs" />
+    <Compile Include="Services\MovimentBoxService.cs" />
+    <Compile Include="Services\MovimentItemService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Validation\ValidationError.cs" />
+    <Compile Include="Entities\Validations\ValidationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="Validation\Validation.cs" />
+    <Compile Include="Validation\ValidationRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\EqualityCompare\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Entities\Validations\ValidationMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
